@@ -1,5 +1,5 @@
 execute_fmt () {
-  delete_existing_comments 'fmt' '### Terraform `fmt` Failed'
+  # delete_existing_comments 'fmt' '### Terraform `fmt` Failed'
 
   # Exit Code: 0
   # Meaning: All files formatted correctly.
