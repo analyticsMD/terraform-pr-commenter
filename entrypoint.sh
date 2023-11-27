@@ -29,6 +29,11 @@ if [[ $COMMAND == 'plan' ]]; then
   exit 0
 fi
 
+if [[ $COMMAND == 'apply' ]]; then
+  execute_apply
+  exit 0
+fi
+
 if [[ $COMMAND == 'validate' ]]; then
   execute_validate
   exit 0

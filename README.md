@@ -105,7 +105,7 @@ jobs:
 
 | Name                  | Requirement    | Description                                                                                                                                                         |
 |-----------------------|----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `commenter_type`      | ___required___ | The type of comment. Options: [`fmt`, `init`, `plan`, `validate`, `tflint`]                                                                                         |
+| `commenter_type`      | ___required___ | The type of comment. Options: [`fmt`, `init`, `plan`, `validate`, `tflint`, `apply`]                                                                                         |
 | `commenter_input`     | ___optional___ | The comment to post from a previous step output. For plan commenter type either `commenter_input` or `commenter_plan_path` must be set. _This is limited to 128KiB_ |
 | `commenter_plan_path` | ___optional___ | The plan file path including the filename. Only available for plan commenter types.                                                                                 |
 | `commenter_exitcode`  | ___required___ | The exit code from a previous step output.                                                                                                                          |

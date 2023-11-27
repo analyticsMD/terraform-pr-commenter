@@ -68,6 +68,27 @@ runs:
         -v "$(pwd)"/:/workspace \
         commenter ${{ inputs.commenter_type }} ${{ inputs.commenter_exitcode }}
       shell: bash
+    - name: Run commenter image (apply)
+      if: ${{ inputs.commenter_type == 'apply' }}
+      env:
+        COMMENTER_INPUT: ${{ inputs.commenter_input }}
+        COMMENTER_PLAN_FILE: ${{ inputs.commenter_plan_path }}
+        GITHUB_EVENT: ${{ toJSON(github.event) }}
+      run: |
+        docker run \
+        -e GITHUB_TOKEN \
+        -e TF_WORKSPACE \
+        -e EXPAND_SUMMARY_DETAILS \
+        -e HIGHLIGHT_CHANGES \
+        -e GITHUB_EVENT \
+        -e COMMENTER_INPUT \
+        -e COMMENTER_DEBUG \
+        -e COMMENTER_ECHO \
+        -e COMMENTER_PLAN_FILE \
+        -e COMMENTER_POST_PLAN_OUTPUTS \
+        -v "$(pwd)"/:/workspace \
+        commenter ${{ inputs.commenter_type }} ${{ inputs.commenter_exitcode }}
+      shell: bash
     - name: Run commenter image (non-plan)
       if: ${{ inputs.commenter_type != 'plan' }}
       env:
