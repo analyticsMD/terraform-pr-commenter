@@ -1,5 +1,5 @@
 execute_validate () {
-  delete_existing_comments "validate" '### Terraform `validate` Failed'
+  # delete_existing_comments "validate" '### Terraform `validate` Failed'
 
   # Exit Code: 0
   # Meaning: Terraform successfully validated.

@@ -1,5 +1,5 @@
 execute_init () {
-  delete_existing_comments "init" '### Terraform `init` Failed'
+  # delete_existing_comments "init" '### Terraform `init` Failed'
 
   # Exit Code: 0
   # Meaning: Terraform successfully initialized.
