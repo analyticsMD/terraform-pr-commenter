@@ -57,6 +57,7 @@ runs:
         docker run \
         -e GITHUB_TOKEN \
         -e TF_WORKSPACE \
+        -e TF_COMPONENT \
         -e EXPAND_SUMMARY_DETAILS \
         -e HIGHLIGHT_CHANGES \
         -e GITHUB_EVENT \
@@ -78,6 +79,7 @@ runs:
         docker run \
         -e GITHUB_TOKEN \
         -e TF_WORKSPACE \
+        -e TF_COMPONENT \
         -e EXPAND_SUMMARY_DETAILS \
         -e HIGHLIGHT_CHANGES \
         -e GITHUB_EVENT \
@@ -98,6 +100,7 @@ runs:
         docker run \
         -e GITHUB_TOKEN \
         -e TF_WORKSPACE \
+        -e TF_COMPONENT \
         -e EXPAND_SUMMARY_DETAILS \
         -e HIGHLIGHT_CHANGES \
         -e GITHUB_EVENT \

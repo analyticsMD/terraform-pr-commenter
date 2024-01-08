@@ -28,6 +28,7 @@ on:
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   TF_WORKSPACE: "example"
+  TF_COMPONENT: "example"
   TF_VERSION: "1.4.6"
 
 jobs:
@@ -95,6 +96,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         TF_WORKSPACE: ${{ inputs.terraform_workspace }}
+        TF_WORKSPACE: ${{ inputs.terraform_component }}
       with:
         commenter_type: plan
         commenter_plan_path: tf_plan.txt

@@ -45,6 +45,10 @@ parse_args () {
   # Read TF_WORKSPACE environment variable or use "default"
   # shellcheck disable=SC2034
   WORKSPACE=${TF_WORKSPACE:-default}
+  
+  # Read TF_COMPONENT environment variable or use "default"
+  # shellcheck disable=SC2034
+  COMPONENT=${TF_COMPONENT:-default}
 
   # Read EXPAND_SUMMARY_DETAILS environment variable or use "true"
   if [[ ${EXPAND_SUMMARY_DETAILS:-false} == "true" ]]; then
