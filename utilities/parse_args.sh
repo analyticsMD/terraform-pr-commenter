@@ -74,8 +74,21 @@ parse_args () {
   CONTENT_HEADER="X-GitHub-Api-Version: 2022-11-28"
 
 # PR_COMMENTS_URL=$(echo "$GITHUB_EVENT" | jq -r ".pull_request.comments_url")
-  PR_COMMENTS_URL=$(echo "$GITHUB_EVENT" | jq -r ".issue.comments_url")
-  PR_COMMENTS_URL+="?per_page=100"
+  # PR_COMMENTS_URL=$(echo "$GITHUB_EVENT" | jq -r ".issue.comments_url")
+  # PR_COMMENTS_URL+="?per_page=100"
+
+  # Extract event type
+  EVENT_TYPE=$(echo "$GITHUB_EVENT" | jq -r ".type")
+
+  # Determine comments URL based on event type
+  if [[ $EVENT_TYPE == "pull_request" ]]; then
+    PR_COMMENTS_URL=$(echo "$GITHUB_EVENT" | jq -r ".pull_request.comments_url")
+  else
+    PR_COMMENTS_URL=$(echo "$GITHUB_EVENT" | jq -r ".issue.comments_url")
+  fi
+
+  # Use the determined comments URL
+  echo "Using comments URL: $PR_COMMENTS_URL"
 
   # shellcheck disable=SC2034
   PR_COMMENT_URI=$(echo "$GITHUB_EVENT" | jq -r ".repository.issue_comment_url" | sed "s|{/number}||g")
