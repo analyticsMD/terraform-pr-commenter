@@ -73,8 +73,8 @@ parse_args () {
   # shellcheck disable=SC2034
   CONTENT_HEADER="X-GitHub-Api-Version: 2022-11-28"
 
-#   PR_COMMENTS_URL=$(echo "$GITHUB_EVENT" | jq -r ".issue.comments_url")
-  PR_COMMENTS_URL=$(echo "$GITHUB_EVENT" | jq -r ".pull_request.comments_url")
+# PR_COMMENTS_URL=$(echo "$GITHUB_EVENT" | jq -r ".pull_request.comments_url")
+  PR_COMMENTS_URL=$(echo "$GITHUB_EVENT" | jq -r ".issue.comments_url")
   PR_COMMENTS_URL+="?per_page=100"
 
   # shellcheck disable=SC2034
