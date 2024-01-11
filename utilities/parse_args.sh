@@ -82,7 +82,7 @@ parse_args () {
 
   # Determine comments URL based on event type
   if [[ $EVENT_TYPE == "pull_request" ]]; then
-    PR_COMMENTS_URL=$(echo "$GITHUB_EVENT" | jq -r ".pull_request.comments_url")
+    PR_COMMENTS_URL=$(echo "$GITHUB_EVENT" | jq -r ".pull_request.comments")
   else
     PR_COMMENTS_URL=$(echo "$GITHUB_EVENT" | jq -r ".issue.comments_url")
   fi
