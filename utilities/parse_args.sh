@@ -39,6 +39,9 @@ parse_args () {
   # remove terraform debug lines
   INPUT=$(echo "$INPUT" | sed '/^::debug::Terraform exited with code/,$d')
 
+  # Get the last line, which is the overview of the plan
+  OVERVIEW=$(tail -n 1 <<< "$INPUT")
+
   # shellcheck disable=SC2034
   WARNING=$(echo "$INPUT" | grep "│ Warning: " -q && echo "TRUE" || echo "FALSE")
 
