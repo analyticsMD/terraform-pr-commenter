@@ -81,10 +81,10 @@ parse_args () {
   EVENT_TYPE=$(echo "$GITHUB_EVENT" | jq -r ".action")
 
   # Determine comments URL based on event type
-  if [[ $EVENT_TYPE == "opened" ||  $EVENT_TYPE ==  "synchronize" ]]; then
-    PR_COMMENTS_URL=$(echo "$GITHUB_EVENT" | jq -r ".pull_request.comments_url")
-  else
+  if [[ $EVENT_TYPE == "created" ]]; then
     PR_COMMENTS_URL=$(echo "$GITHUB_EVENT" | jq -r ".issue.comments_url")
+  else
+    PR_COMMENTS_URL=$(echo "$GITHUB_EVENT" | jq -r ".pull_request.comments_url")
   fi
 
   # Use the determined comments URL
