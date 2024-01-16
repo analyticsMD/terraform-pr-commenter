@@ -40,7 +40,7 @@ parse_args () {
   INPUT=$(echo "$INPUT" | sed '/^::debug::Terraform exited with code/,$d')
 
   # Get the last line, which is the overview of the plan
-  OVERVIEW=$(echo "$OUTPUT" | grep -o 'Plan:.*')
+  OVERVIEW=$(echo "$INPUT" | grep -o 'Plan:.*')
 
   # shellcheck disable=SC2034
   WARNING=$(echo "$INPUT" | grep "│ Warning: " -q && echo "TRUE" || echo "FALSE")
