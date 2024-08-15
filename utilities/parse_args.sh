@@ -17,6 +17,7 @@ parse_args () {
   if [[ $COMMAND == 'plan' ]]; then
     if test -f "workspace/${COMMENTER_PLAN_FILE}"; then
       info "Found commenter plan file."
+      cd workspace/
       info "Current working directory: $(pwd)"
       info "Current files in directory: $(ls)"
       pushd workspace > /dev/null || (error "Failed to push workspace dir" && exit 1)
