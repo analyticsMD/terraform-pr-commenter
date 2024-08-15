@@ -42,14 +42,18 @@ post_comment () {
 ### DIFF AND STRING SUBSTITUTION UTILITIES ###
 
 post_diff_comments () {
+  set -x 
   local type=$1
   local comment_prefix=$2
   local comment_string=$3
 
   debug "Total $type length: ${#comment_string}"
+  info "Comment String: $comment_string"
   local comment_split
   split_string comment_split "$comment_string"
+  info "Split String Array: ${comment_split[@]}"
   local comment_count=${#comment_split[@]}
+  info "Comment Count: $comment_count"
 
   info "Writing $comment_count $type comment(s)"
 
