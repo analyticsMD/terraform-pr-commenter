@@ -20,7 +20,7 @@ parse_args () {
       cd workspace || (error "Failed to change to workspace dir" && exit 1)
       info "Current working directory: $(pwd)"
       info "Current files in directory: $(ls)"
-      cat tf_plan.tf
+      cat tf_plan.txt
       # pushd workspace > /dev/null || (error "Failed to push workspace dir" && exit 1)
       RAW_INPUT="$( cat "${COMMENTER_PLAN_FILE}" 2>&1 )"
       cd - || (error "Failed to return to previous dir" && exit 1)
