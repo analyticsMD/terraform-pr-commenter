@@ -51,7 +51,7 @@ runs:
       if: ${{ inputs.commenter_type == 'plan' }}
       env:
         COMMENTER_INPUT: ${{ inputs.commenter_input }}
-        COMMENTER_PLAN_FILE: ${{ inputs.commenter_plan_path }}
+        COMMENTER_PLAN_FILE: plan.tfplan
         GITHUB_EVENT: ${{ toJSON(github.event) }}
       run: |
         docker run \
@@ -73,7 +73,7 @@ runs:
       if: ${{ inputs.commenter_type == 'apply' }}
       env:
         COMMENTER_INPUT: ${{ inputs.commenter_input }}
-        COMMENTER_PLAN_FILE: ${{ inputs.commenter_plan_path }}
+        COMMENTER_PLAN_FILE: plan.tfplan
         GITHUB_EVENT: ${{ toJSON(github.event) }}
       run: |
         docker run \
