@@ -42,7 +42,7 @@ parse_args () {
   info "FINAL INPUT"
   # remove terraform debug lines
   INPUT=$(echo "$INPUT" | sed '/^::debug::Terraform exited with code/,$d')
-  info ${COMMENTER_PLAN_FILE} 
+  info ${INPUT} 
   # Get the last line, which is the overview of the plan
   OVERVIEW=$(echo "$INPUT" | grep -o 'Plan:.*')
 
