@@ -11,7 +11,7 @@ parse_args () {
   debug "EXIT_CODE: $EXIT_CODE"
 
   # Arg 2 is input file. We strip ANSI colours.
-  RAW_INPUT="$COMMENTER_INPUT"
+  RAW_INPUT="$COMMENTER_PLAN_FILE"
   debug "COMMENTER_INPUT: $COMMENTER_INPUT"
 
   if [[ $COMMAND == 'plan' ]]; then
