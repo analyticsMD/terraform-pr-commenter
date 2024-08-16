@@ -39,7 +39,7 @@ parse_args () {
 
   # now remove all ANSI colors
   INPUT=$(echo "$INPUT" | sed -r 's/\x1b\[[0-9;]*m//g')
-  info "FINAL INPUT"
+  # info "FINAL INPUT"
   # remove terraform debug lines
   INPUT=$(echo "$INPUT" | sed '/^::debug::Terraform exited with code/,$d')
   info ${INPUT} 

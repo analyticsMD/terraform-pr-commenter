@@ -48,10 +48,10 @@ post_plan_comments () {
   local delimiter_start_cmd
   local delimiter_end_cmd
 
+  delimiter_start_strings+=("Terraform used the selected providers to generate the following execution plan.")
   # delimiter_start_strings+=("Terraform has been successfully initialized!")
   # delimiter_start_strings+=("Initializing")
   delimiter_start_strings+=("An execution plan has been generated and is shown below.")
-  delimiter_start_strings+=("Terraform used the selected providers to generate the following execution")
   delimiter_start_strings+=("No changes. Infrastructure is up-to-date.")
   delimiter_start_strings+=("No changes. Your infrastructure matches the configuration.")
 
@@ -64,7 +64,7 @@ post_plan_comments () {
   clean_input=$(echo "$INPUT" | perl -pe "${delimiter_start_cmd}")
   clean_input=$(echo "$clean_input" | sed -r "${delimiter_end_cmd}")
 
-  post_diff_comments "plan" "Terraform \`plan\` Succeeded for Workspace: \`$WORKSPACE\`, Component: \`$COMPONENT\`. \`$OVERVIEW\`" "$clean_input"
+  post_diff_comments "plan" "Terraform \`plan\` Succeeded for Workspace: \`$WORKSPACE\`, Component: \`$COMPONENT\`." "$clean_input"
 }
 
 post_outputs_comments() {
