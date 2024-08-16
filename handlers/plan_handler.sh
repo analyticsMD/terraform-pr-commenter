@@ -49,6 +49,7 @@ post_plan_comments () {
   local delimiter_end_cmd
 
   delimiter_start_strings+=("Terraform used the selected providers to generate the following execution plan.")
+  delimiter_start_strings+=("Resource actions are indicated with the following symbols:")
   # delimiter_start_strings+=("Terraform has been successfully initialized!")
   # delimiter_start_strings+=("Initializing")
   delimiter_start_strings+=("An execution plan has been generated and is shown below.")
