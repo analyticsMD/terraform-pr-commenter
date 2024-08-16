@@ -48,7 +48,7 @@ post_plan_comments () {
   local delimiter_start_cmd
   local delimiter_end_cmd
 
-  delimiter_start_strings+=("Refreshing state...")
+  delimiter_start_strings+=("Switched to workspace")
   delimiter_start_strings+=("Resource actions are indicated with the following symbols:")
   delimiter_start_strings+=("Terraform will perform the following actions:")
   # delimiter_start_strings+=("Terraform has been successfully initialized!")

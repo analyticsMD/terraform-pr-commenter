@@ -11,17 +11,18 @@ parse_args () {
   debug "EXIT_CODE: $EXIT_CODE"
 
   # Arg 2 is input file. We strip ANSI colours.
-  RAW_INPUT="$COMMENTER_PLAN_FILE"
+  RAW_INPUT="$COMMENTER_INPUT"
   debug "COMMENTER_INPUT: $COMMENTER_INPUT"
 
   if [[ $COMMAND == 'plan' ]]; then
     if test -f "workspace/${COMMENTER_PLAN_FILE}"; then
       info "Found commenter plan file."
       cd workspace || (error "Failed to change to workspace dir" && exit 1)
+      sed -i '/\/home\/runner\/_work\/_temp\//d' tf_plan.txt
       sed -i '1d' tf_plan.txt
       # pushd workspace > /dev/null || (error "Failed to push workspace dir" && exit 1)
-      RAW_INPUT="$( cat "${COMMENTER_PLAN_FILE}" 2>&1 )"
-      # RAW_INPUT=$(<"${COMMENTER_PLAN_FILE}")
+      # RAW_INPUT="$( cat "${COMMENTER_PLAN_FILE}" 2>&1 )"
+      RAW_INPUT=$(<"${COMMENTER_PLAN_FILE}")
       info 
       cd - || (error "Failed to return to previous dir" && exit 1)
     else
@@ -42,7 +43,7 @@ parse_args () {
   info "FINAL INPUT"
   # remove terraform debug lines
   INPUT=$(echo "$INPUT" | sed '/^::debug::Terraform exited with code/,$d')
-  info ${INPUT} 
+  echo ${INPUT} 
   # Get the last line, which is the overview of the plan
   OVERVIEW=$(echo "$INPUT" | grep -o 'Plan:.*')
   info "Overview:" ${INPUT} 
