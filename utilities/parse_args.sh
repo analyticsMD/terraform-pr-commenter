@@ -18,10 +18,10 @@ parse_args () {
     if test -f "workspace/${COMMENTER_PLAN_FILE}"; then
       info "Found commenter plan file."
       cd workspace || (error "Failed to change to workspace dir" && exit 1)
-      # sed -i '1d' tf_plan.txt
+      sed -i '1d' tf_plan.txt
       # pushd workspace > /dev/null || (error "Failed to push workspace dir" && exit 1)
-      #RAW_INPUT="$( cat "${COMMENTER_PLAN_FILE}" 2>&1 )"
-      RAW_INPUT=$(<"${COMMENTER_PLAN_FILE}")
+      RAW_INPUT="$( cat "${COMMENTER_PLAN_FILE}" 2>&1 )"
+      # RAW_INPUT=$(<"${COMMENTER_PLAN_FILE}")
       info 
       cd - || (error "Failed to return to previous dir" && exit 1)
     else
@@ -45,7 +45,7 @@ parse_args () {
   info ${INPUT} 
   # Get the last line, which is the overview of the plan
   OVERVIEW=$(echo "$INPUT" | grep -o 'Plan:.*')
-
+  info "Overview:" ${INPUT} 
   # shellcheck disable=SC2034
   WARNING=$(echo "$INPUT" | grep "│ Warning: " -q && echo "TRUE" || echo "FALSE")
 
