@@ -41,13 +41,10 @@ parse_args () {
 
   # now remove all ANSI colors
   INPUT=$(echo "$INPUT" | sed -r 's/\x1b\[[0-9;]*m//g')
-  info "FINAL INPUT"
   # remove terraform debug lines
   INPUT=$(echo "$INPUT" | sed '/^::debug::Terraform exited with code/,$d')
-  echo "FINAL INPUT:" ${INPUT} 
   # Get the last line, which is the overview of the plan
   OVERVIEW=$(echo "$INPUT" | grep -o 'Plan:.*')
-  info "Overview:" ${INPUT} 
   # shellcheck disable=SC2034
   WARNING=$(echo "$INPUT" | grep "│ Warning: " -q && echo "TRUE" || echo "FALSE")
 
