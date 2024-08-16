@@ -51,6 +51,7 @@ post_plan_comments () {
   # delimiter_start_strings+=("plan -var-file")
   # delimiter_start_strings+=("Terraform has been successfully initialized!")
   # delimiter_start_strings+=("Initializing")
+  delimiter_start_strings+=("Terraform used the selected providers to generate the following execution")
   delimiter_start_strings+=("An execution plan has been generated and is shown below.")
   delimiter_start_strings+=("No changes. Infrastructure is up-to-date.")
   delimiter_start_strings+=("No changes. Your infrastructure matches the configuration.")
