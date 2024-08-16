@@ -18,8 +18,8 @@ parse_args () {
     if test -f "workspace/${COMMENTER_PLAN_FILE}"; then
       info "Found commenter plan file."
       cd workspace || (error "Failed to change to workspace dir" && exit 1)
-      sed -i '/plan -var-file/,$!d' your_file.txt
-      sed -i '/\/home\/runner\/_work\/_temp\//d' tf_plan.txt
+      sed -i '/plan -var-file/,$!d' ${COMMENTER_PLAN_FILE}
+      sed -i '/\/home\/runner\/_work\/_temp\//d' ${COMMENTER_PLAN_FILE}
       # sed -i '1d' tf_plan.txt
       # pushd workspace > /dev/null || (error "Failed to push workspace dir" && exit 1)
       RAW_INPUT="$( cat "${COMMENTER_PLAN_FILE}" 2>&1 )"
