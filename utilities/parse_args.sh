@@ -19,10 +19,11 @@ parse_args () {
       info "Found commenter plan file."
       cd workspace || (error "Failed to change to workspace dir" && exit 1)
       # sed -i '/\/home\/runner\/_work\/_temp\//d' tf_plan.txt
+      grep -v '/home/runner/_work/_temp/' ${COMMENTER_PLAN_FILE} > temp_file.txt && mv temp_file.txt ${COMMENTER_PLAN_FILE}
       # sed -i '1d' tf_plan.txt
       # pushd workspace > /dev/null || (error "Failed to push workspace dir" && exit 1)
-      # RAW_INPUT="$( cat "${COMMENTER_PLAN_FILE}" 2>&1 )"
-      RAW_INPUT=$(<"${COMMENTER_PLAN_FILE}")
+      RAW_INPUT="$( cat "${COMMENTER_PLAN_FILE}" 2>&1 )"
+      #RAW_INPUT=$(<"${COMMENTER_PLAN_FILE}")
       info 
       cd - || (error "Failed to return to previous dir" && exit 1)
     else
